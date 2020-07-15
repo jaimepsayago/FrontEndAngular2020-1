@@ -20,4 +20,14 @@
 			<li *ngFor = "let favorito of favoritos"> {{favorito}}</li>
 		</ul>
 
+
+		<ul class="a" id="favoritos" *ngIf="favoritosVisibles==true">
+			<li *ngFor = "let favorito of favoritos"> {{favorito}}</li>
+		</ul>
+	</div>
+
+	<div class="container">
+	<ul class="a" id="favoritos" *ngIf="favoritosVisibles==true">
+			<li *ngFor = "let favorito of favoritos"> {{favorito}}</li>
+		</ul>
 	</div>

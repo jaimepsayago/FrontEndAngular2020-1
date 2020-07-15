@@ -10,3 +10,32 @@ body{
 .borderVerde{
 	border: 5px solid green;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: blue;
+  padding: 12px;
+}
+
+ul.a {
+  background-color: yellow;
+}
+
+ul.b {
+  background-color: olive;
+}
+
+ol.c {
+  background-color: green;
+}
+
+ol.d {
+  background-color: blue;
+}
