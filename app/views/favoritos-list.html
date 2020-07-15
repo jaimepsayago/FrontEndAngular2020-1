@@ -1,13 +1,17 @@
 	<h1> {{title}}</h1>
 
-	<div class="container">
 
-		<button (click) = "showFavoritos"
+	cambiar color: <input type="text" (blur) = "changeColor()" [(ngModel)]="color"/>
+	
+	<div class="container" [style.background]= "color" 
+	[ngClass]="{bordeVerde:favoritosVisibles == true, bordeNegro: !favoritosVisibles}">
+
+		<button (click) = "showFavoritos()"
 		*ngIf="favoritosVisibles == false">
 		Mostrar favoritos
 		</button>
 
-		<button (click) = "hideFavoritos"
+		<button (click) = "hideFavoritos()"
 		*ngIf="favoritosVisibles == true">
 		Ocultar favoritos
 		</button>

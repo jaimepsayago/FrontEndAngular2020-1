@@ -21,6 +21,10 @@ var FavoritosListComponent = (function () {
     FavoritosListComponent.prototype.hideFavoritos = function () {
         this.favoritosVisibles = false;
     };
+    FavoritosListComponent.prototype.changeColor = function () {
+        //this.color="red";
+        console.log(this.color);
+    };
     FavoritosListComponent = __decorate([
         core_1.Component({
             selector: 'favoritos-list',
