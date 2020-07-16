@@ -9,28 +9,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var favorito_services_1 = require('../services/favorito.services');
 var FavoritosListComponent = (function () {
-    function FavoritosListComponent() {
+    function FavoritosListComponent(_favoritoService) {
+        this._favoritoService = _favoritoService;
         this.title = 'listado de favoritos';
-        this.favoritos = ['desarrollo', 'basado', 'plataformas'];
-        this.favoritosVisibles = true;
     }
-    FavoritosListComponent.prototype.showFavoritos = function () {
-        this.favoritosVisibles = true;
-    };
-    FavoritosListComponent.prototype.hideFavoritos = function () {
-        this.favoritosVisibles = false;
-    };
-    FavoritosListComponent.prototype.changeColor = function () {
-        //this.color="red";
-        console.log(this.color);
+    FavoritosListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log('FavoritosListComponent cargado!');
+        this._favoritoService.getFavoritos().subscribe(function (result) {
+            console.log(result);
+            //cargar datos en el array
+            _this.favoritos = result.favoritos;
+            if (!_this.favoritos) {
+                alert('error');
+            }
+        }, function (error) {
+            _this.errorMessage = error;
+            if (_this.errorMessage != null) {
+                console.log(_this.errorMessage);
+                alert('error en la peticion');
+            }
+        });
     };
     FavoritosListComponent = __decorate([
         core_1.Component({
             selector: 'favoritos-list',
-            templateUrl: 'app/views/favoritos-list.html'
+            templateUrl: 'app/views/favoritos-list.html',
+            //inyección de depencia del objeto service hacia mi componente
+            providers: [favorito_services_1.FavoritoService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [favorito_services_1.FavoritoService])
     ], FavoritosListComponent);
     return FavoritosListComponent;
 }());
