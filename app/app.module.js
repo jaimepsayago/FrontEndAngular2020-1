@@ -15,6 +15,7 @@ var app_component_1 = require('./app.component');
 var http_1 = require('@angular/http');
 var app_routing_1 = require('./app.routing');
 var favoritos_list_component_1 = require('./components/favoritos-list.component');
+var favorito_detail_component_1 = require('./components/favorito-detail.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,7 +25,8 @@ var AppModule = (function () {
                 app_routing_1.routing
             ],
             declarations: [app_component_1.AppComponent,
-                favoritos_list_component_1.FavoritosListComponent
+                favoritos_list_component_1.FavoritosListComponent,
+                favorito_detail_component_1.FavoritoDetailComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

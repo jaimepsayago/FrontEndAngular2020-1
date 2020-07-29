@@ -6,13 +6,12 @@
 			<h4>{{favorito.title}}</h4>
 			<p>{{favorito.url}}</p>
 			<p class="buttons"> 
-				<a href="{{favorito.url}}" target="_blank" 
+				<a href="{{favorito.url}}" class="btn btn-default" 
 				class="btn btn-default">
 				Ir al Dato
 				</a>
-				<a href="{{favorito.url}}" target="_blank" 
-				class="btn btn-ver">
-				Ver
+				<a [routerLink]="['/marcador',favorito._id]"  class="btn btn-ver">
+					Ver
 				</a>
 				<a href="{{favorito.url}}" target="_blank" 
 				class="btn btn-editar">

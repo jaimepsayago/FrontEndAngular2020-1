@@ -21,6 +21,28 @@ var FavoritoService = (function () {
     FavoritoService.prototype.getFavoritos = function () {
         return this._http.get(this.url + 'favoritostodos').map(function (res) { return res.json(); });
     };
+    //metodo buscar por id
+    FavoritoService.prototype.getFavorito = function (id) {
+        return this._http.get(this.url + 'favorito/' + id).map(function (res) { return res.json(); });
+    };
+    //metodo addFavorito
+    FavoritoService.prototype.addFavorito = function (favorito) {
+        var json = JSON.stringify(favorito);
+        var params = json;
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        return this._http.post(this.url + 'favorito', params, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    //metodo editar
+    FavoritoService.prototype.editFavorito = function (id, favorito) {
+        var json = JSON.stringify(favorito);
+        var params = json;
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        return this._http.put(this.url + 'favorito/' + id, params, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    //metodo borrar
+    FavoritoService.prototype.deleteFavorito = function (id) {
+        return this._http.delete(this.url + 'favorito/' + id).map(function (res) { return res.json(); });
+    };
     FavoritoService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
