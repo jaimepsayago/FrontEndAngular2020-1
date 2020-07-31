@@ -7,8 +7,10 @@ import {HttpModule, JsonpModule} from '@angular/http';
 import {routing, appRoutingProviders} from './app.routing';
 
 
-import { FavoritosListComponent} from './components/favoritos-list.component';
+import {FavoritosListComponent} from './components/favoritos-list.component';
 import {FavoritoDetailComponent} from './components/favorito-detail.component';
+import {FavoritoAddComponent} from './components/favorito-add.component';
+
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpModule,
@@ -16,7 +18,8 @@ import {FavoritoDetailComponent} from './components/favorito-detail.component';
    				],
   declarations: [ AppComponent,
   				FavoritosListComponent,
-  				FavoritoDetailComponent
+  				FavoritoDetailComponent,
+  				FavoritoAddComponent
   				 ],
   bootstrap:    [ AppComponent ]
 })
