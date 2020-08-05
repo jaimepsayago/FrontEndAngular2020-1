@@ -11,6 +11,8 @@ import {FavoritosListComponent} from './components/favoritos-list.component';
 import {FavoritoDetailComponent} from './components/favorito-detail.component';
 import {FavoritoAddComponent} from './components/favorito-add.component';
 
+import { FavoritoEditComponent } from './components/favorito-edit.component';
+
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpModule,
@@ -19,7 +21,9 @@ import {FavoritoAddComponent} from './components/favorito-add.component';
   declarations: [ AppComponent,
   				FavoritosListComponent,
   				FavoritoDetailComponent,
-  				FavoritoAddComponent
+  				FavoritoAddComponent,
+          FavoritoEditComponent
+  		
   				 ],
   bootstrap:    [ AppComponent ]
 })

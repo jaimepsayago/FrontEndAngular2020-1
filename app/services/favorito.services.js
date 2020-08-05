@@ -14,34 +14,34 @@ require('rxjs/add/operator/map');
 var FavoritoService = (function () {
     function FavoritoService(_http) {
         this._http = _http;
-        //port la api rest
-        this.url = 'http://localhost:3678/api/';
+        this.url = 'http://localhost:3678/api/'; //port de la api rest
     }
-    //metodo para obtneer los datos desde la api
+    //metodo para obtener datos del api rest con ajax y devuelve un json
     FavoritoService.prototype.getFavoritos = function () {
         return this._http.get(this.url + 'favoritostodos').map(function (res) { return res.json(); });
     };
-    //metodo buscar por id
+    //recib
     FavoritoService.prototype.getFavorito = function (id) {
-        return this._http.get(this.url + 'favorito/' + id).map(function (res) { return res.json(); });
+        return this._http.get(this.url + 'favorito/' + id)
+            .map(function (res) { return res.json(); });
     };
-    //metodo addFavorito
     FavoritoService.prototype.addFavorito = function (favorito) {
         var json = JSON.stringify(favorito);
         var params = json;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this._http.post(this.url + 'favorito', params, { headers: headers }).map(function (res) { return res.json(); });
+        return this._http.post(this.url + 'favorito', params, { headers: headers })
+            .map(function (res) { return res.json(); });
     };
-    //metodo editar
     FavoritoService.prototype.editFavorito = function (id, favorito) {
         var json = JSON.stringify(favorito);
         var params = json;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this._http.put(this.url + 'favorito/' + id, params, { headers: headers }).map(function (res) { return res.json(); });
+        return this._http.put(this.url + 'favorito/' + id, params, { headers: headers })
+            .map(function (res) { return res.json(); });
     };
-    //metodo borrar
     FavoritoService.prototype.deleteFavorito = function (id) {
-        return this._http.delete(this.url + 'favorito/' + id).map(function (res) { return res.json(); });
+        return this._http.delete(this.url + 'favorito/' + id)
+            .map(function (res) { return res.json(); });
     };
     FavoritoService = __decorate([
         core_1.Injectable(), 

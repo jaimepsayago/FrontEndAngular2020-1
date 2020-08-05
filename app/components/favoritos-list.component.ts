@@ -16,7 +16,7 @@ export class FavoritosListComponent{
 	public title:string;
 	public errorMessage;
 	public favoritos: Favorito[];
-	
+	public confirmado;
 
 	constructor( private _favoritoService:FavoritoService){
 		this.title='listado de favoritos';
@@ -24,26 +24,59 @@ export class FavoritosListComponent{
 	}
 
 	ngOnInit(){
-		console.log('FavoritosListComponent cargado!');
-		this._favoritoService.getFavoritos().subscribe(
-			result=>{
-				console.log(result);
-				//cargar datos en el array
-				this.favoritos = result.favoritos;
-				if(!this.favoritos){
-					alert('error');
-				}
-			},
-			error =>{
-				this.errorMessage = <any>error;
-				if(this.errorMessage!=null){
-					console.log(this.errorMessage);
-					alert('error en la peticion');
-				}
-			}
-
-			);
+		console.log('FavoritosListComponent cargado!!');
+		this.getFavoritos();
 	}
 
+	getFavoritos(){
+		this._favoritoService.getFavoritos().subscribe(
+			result => {
+				console.log(result);
+				this.favoritos = result.favoritos;
+
+				if(!this.favoritos){
+					alert('Error en el servidor');
+				}else{
+					//this.loading = false;
+				}
+
+			},
+			error => {
+				this.errorMessage = <any>error;
+
+				if(this.errorMessage != null){
+					console.log(this.errorMessage);
+					alert('Error en la petición');
+				}
+			}
+		);
+	}
+
+	onBorrarConfirm(id){
+		this.confirmado = id;
+	}
+
+	onCancelarConfirm(id){
+		this.confirmado = null;
+	}
+
+	onBorrarFavorito(id){
+		this._favoritoService.deleteFavorito(id).subscribe(
+			result => {
+				if(!result.message){
+					alert('Error en la petición');
+				}
+				this.getFavoritos();
+			},
+			error => {
+				this.errorMessage = <any>error;
+
+				if(this.errorMessage != null){
+					console.log(this.errorMessage);
+					alert('Error en la petición');
+				}
+			}
+		);
+	}
 
 }
